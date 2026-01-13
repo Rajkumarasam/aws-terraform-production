@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: nginx:alpine  # <--- 100% Guaranteed to work
+        image: nginx:alpine  # <--- 100% Working Image
         ports:
         - containerPort: 80
         resources:
@@ -32,5 +32,5 @@ spec:
     app: backend
   ports:
     - protocol: TCP
-      port: 5000      # <--- Frontend talks to this port
-      targetPort: 80  # <--- Traffic forwards to Nginx inside
+      port: 5000      # <--- The Frontend talks to port 5000
+      targetPort: 80  # <--- We forward it to Nginx's port 80
