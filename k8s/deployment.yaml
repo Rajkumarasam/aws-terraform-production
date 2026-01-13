@@ -1,19 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ecommerce-app
+  name: frontend-ui
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ecommerce
+      app: frontend
   template:
     metadata:
       labels:
-        app: ecommerce
+        app: frontend
     spec:
       containers:
-      - name: web-server
-        image: nginx:latest  # Using Nginx so the pod stays "Running"
+      - name: ui
+        image: rajkumarasam17/ecommerce-frontend:latest
         ports:
         - containerPort: 80
+        env:
+        - name: REACT_APP_API_URL
+          value: "http://backend-service:5000"
+        resources:
+          requests:
+            memory: "128Mi"
+          limits:
+            memory: "256Mi"
