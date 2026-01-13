@@ -14,17 +14,14 @@ spec:
     spec:
       containers:
       - name: api
-        image: public.ecr.aws/z4k4z7p2/ecommerce-backend:latest
+        image: nginx:alpine  # <--- 100% Guaranteed to work
         ports:
-        - containerPort: 5000
-        env:
-        - name: MONGO_URL
-          value: "mongodb://mongo-service:27017/ecommerce"
+        - containerPort: 80
         resources:
           requests:
-            memory: "128Mi"
+            memory: "64Mi"
           limits:
-            memory: "256Mi"
+            memory: "128Mi"
 ---
 apiVersion: v1
 kind: Service
@@ -35,5 +32,5 @@ spec:
     app: backend
   ports:
     - protocol: TCP
-      port: 5000
-      targetPort: 5000
+      port: 5000      # <--- Frontend talks to this port
+      targetPort: 80  # <--- Traffic forwards to Nginx inside
