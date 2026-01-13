@@ -14,12 +14,6 @@ spec:
     spec:
       containers:
       - name: ui
-        # Amazon-hosted Nginx
-        image: public.ecr.aws/nginx/nginx:1.24-alpine
+        image: nginx:latest
         ports:
         - containerPort: 80
-        resources:
-          requests:
-            memory: "64Mi"
-          limits:
-            memory: "128Mi"

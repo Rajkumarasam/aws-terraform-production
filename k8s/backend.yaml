@@ -14,15 +14,9 @@ spec:
     spec:
       containers:
       - name: api
-        # Amazon-hosted Nginx (Bypasses Docker Hub limits)
-        image: public.ecr.aws/nginx/nginx:1.24-alpine
+        image: nginx:latest  # The standard image that worked before
         ports:
         - containerPort: 80
-        resources:
-          requests:
-            memory: "64Mi"
-          limits:
-            memory: "128Mi"
 ---
 apiVersion: v1
 kind: Service
@@ -33,5 +27,5 @@ spec:
     app: backend
   ports:
     - protocol: TCP
-      port: 5000      # Frontend talks to 5000
-      targetPort: 80  # Forwards to Nginx 80
+      port: 5000
+      targetPort: 80
