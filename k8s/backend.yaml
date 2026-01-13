@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: api
-        image: nginx:alpine  # <--- 100% Working Image
+        # Amazon-hosted Nginx (Bypasses Docker Hub limits)
+        image: public.ecr.aws/nginx/nginx:1.24-alpine
         ports:
         - containerPort: 80
         resources:
@@ -32,5 +33,5 @@ spec:
     app: backend
   ports:
     - protocol: TCP
-      port: 5000      # <--- The Frontend talks to port 5000
-      targetPort: 80  # <--- We forward it to Nginx's port 80
+      port: 5000      # Frontend talks to 5000
+      targetPort: 80  # Forwards to Nginx 80

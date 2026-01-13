@@ -14,7 +14,8 @@ spec:
     spec:
       containers:
       - name: ui
-        image: nginx:alpine # <--- Back to safety
+        # Amazon-hosted Nginx
+        image: public.ecr.aws/nginx/nginx:1.24-alpine
         ports:
         - containerPort: 80
         resources:
