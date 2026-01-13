@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: rajkumarasam17/ecommerce-backend:latest
+        image: public.ecr.aws/z4k4z7p2/ecommerce-backend:latest
         ports:
         - containerPort: 5000
         env:

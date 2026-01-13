@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ui
-        image: rajkumarasam17/ecommerce-frontend:latest
+        image: public.ecr.aws/z4k4z7p2/ecommerce-frontend:latest
         ports:
         - containerPort: 80
         env:
